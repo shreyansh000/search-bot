@@ -1,6 +1,7 @@
 from telegram.message import Message
 from telegram.update import Update
 import time
+from telegram import ParseMode
 from bot import LOGGER, bot
 from telegram.error import TimedOut, BadRequest
 from bot import bot
@@ -15,11 +16,10 @@ def sendMessage(text: str, bot, update: Update):
     except Exception as e:
         LOGGER.error(str(e))
 
-def editMessage(text: str, message: Message, reply_markup: None):
+def editMessage(text: str, message: Message):
     try:
         bot.edit_message_text(text=text, message_id=message.message_id,
-                              chat_id=message.chat.id,reply_markup=reply_markup,
-                              parse_mode='HTMl')
+                              chat_id=message.chat.id, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     except Exception as e:
         LOGGER.error(str(e))
 
