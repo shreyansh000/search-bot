@@ -16,7 +16,7 @@ def list_drive(update,context):
         gdrive = GoogleDriveHelper(None)
         msg, button = gdrive.drive_list(search)
 
-        editMessage(msg,reply,button)
+        editMessage(msg,reply)
 
     except IndexError:
         sendMessage('send a search key along with command', context.bot, update)
